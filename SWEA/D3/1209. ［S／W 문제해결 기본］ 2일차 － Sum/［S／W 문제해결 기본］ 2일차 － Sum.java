@@ -19,15 +19,19 @@ public class Solution {
 				if(tmp > max) max = tmp;
 			}
 			int tmp2 = 0;
+			int tmp3 = 0;
+			
 			for(int j=0 ; j<100 ; j++) {
 				int tmp = 0;
 				for(int i=0 ; i<100 ; i++) {
 					tmp += arr[i][j];
 					if (i==j) tmp2+=arr[i][j];
+					if (i+j==99) tmp3+=arr[i][j];
 				}
 				if(tmp > max) max = tmp;
 			}
 			if(tmp2>max) max=tmp2;
+			if(tmp3>max) max=tmp3;
 			
 			System.out.println("#"+tCase+" "+max);
 		}
