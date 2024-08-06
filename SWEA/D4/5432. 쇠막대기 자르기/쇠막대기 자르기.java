@@ -8,16 +8,16 @@ public class Solution {
 		int T = sc.nextInt();
 		
 		for(int tc=1 ; tc<=T ; tc++) {
-			String[] steel = sc.next().split("");
-			Stack<String> chk = new Stack<>();
+			char[] steel = sc.next().toCharArray();
+			Stack<Character> chk = new Stack<>();
 			
 			int cnt = 0;
 			for(int i=0 ;i<steel.length ; i++) {
-				if(steel[i].equals("(")) {
+				if(steel[i]=='(') {
 					chk.push(steel[i]);
 					cnt++;
 				} else {
-					if (steel[i-1].equals("(")) {
+					if (steel[i-1]=='(') {
 						chk.pop();
 						cnt--;
 						cnt += chk.size();
