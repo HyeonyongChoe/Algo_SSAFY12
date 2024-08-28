@@ -1,9 +1,8 @@
 import java.util.Scanner;
 
 public class Solution {
-    // 병합 정렬
+    // 퀵 정렬
 	static int[] arr = new int[1000000];
-	static int[] sortedArr = new int[1000000];
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -11,44 +10,34 @@ public class Solution {
 		for(int i=0 ; i<1000000 ; i++) {
 			arr[i] = sc.nextInt();
 		}
-		mergeSort(0,999999);
+		quickSort(0,999999);
 		System.out.println(arr[500000]);
 	}
 	
-	static void mergeSort(int left, int right) {
+	static void quickSort(int left, int right) {
 		if(left < right) {
-			int mid = (left+right)/2;
-			mergeSort(left,mid);
-			mergeSort(mid+1, right);
-			merge(left, mid, right);
+			int pivot = lomutoPartition(left, right);
+			quickSort(left, pivot-1);
+			quickSort(pivot+1, right);
 		}
 	}
 	
-	static void merge(int left,int mid, int right) {
-		int L = left;
-		int R = mid+1;
-		int idx = left;
+	static int lomutoPartition(int left, int right) {
+		int pivot = arr[right];
+		int i = left-1;
 		
-		while(L<=mid && R<=right) {
-			if(arr[L] <= arr[R]) {
-				sortedArr[idx++] = arr[L++];
-			} else {
-				sortedArr[idx++] = arr[R++];
+		for(int j=left ; j<=right-1 ; j++) {
+			if(arr[j]<=pivot) {
+				i++;
+				int tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
 			}
 		}
+		int tmp = arr[i+1];
+		arr[i+1] = arr[right];
+		arr[right] = tmp;
 		
-		if(L <= mid) {
-			for(int i=L ; i<=mid ; i++) {
-				sortedArr[idx++] = arr[i];
-			}
-		} else {
-			for(int i=R ; i<=right ; i++) {
-				sortedArr[idx++] = arr[i];
-			}
-		}
-		
-		for(int i=left ; i<=right ; i++) {
-			arr[i] = sortedArr[i];
-		}
+		return i+1;
 	}
 }
