@@ -9,15 +9,20 @@ public class Solution {
 			
 			int N = sc.nextInt();
 			int M = sc.nextInt();
-			
 			int ans = pow(N,M);
 			
-			System.out.println("#"+tCase+" "+ans);
+			System.out.println("#"+tc+" "+ans);
 		}
 	}
 	
-	static int pow(int N, int M) {
-		if (M == 0) return 1;
-		return N * pow(N,M-1);
+	static int pow(int n, int m) {
+		if(m==0) return 1;
+		if(m%2==0) {
+			int tmp = pow(n,m/2);
+			return tmp * tmp; 
+		} else {
+			int tmp = pow(n,(m-1)/2);
+			return tmp * tmp * n;
+		}
 	}
 }
