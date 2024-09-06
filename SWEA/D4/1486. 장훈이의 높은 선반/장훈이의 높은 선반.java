@@ -21,14 +21,14 @@ public class Solution {
 				ans += height[i];
 			}
 			sum = 0;
-			combi(0,0);
+			combi(0);
 			
 			ans -= B;
 			System.out.println("#"+tc+" "+ans);
 		}
 	}
 	
-	static void combi(int sidx, int idx) {
+	static void combi(int idx) {
 		if(sum>=B) {
 			if(ans>sum) ans = sum;
 			return;
@@ -36,8 +36,8 @@ public class Solution {
 		if(idx>=N) return;
 		
 		sum += height[idx];
-		combi(sidx+1, idx+1);
+		combi(idx+1);
 		sum -= height[idx];
-		combi(sidx, idx+1);
+		combi(idx+1);
 	}
 }
