@@ -3,13 +3,17 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int a = sc.nextInt();
-		int b = sc.nextInt();
-		int c = sc.nextInt();
 		
-		int ans1 = a + b - c;
+		int A = sc.nextInt();
+		int B = sc.nextInt();
+		int C = sc.nextInt();
+		
+		
+		int ans1 = A+B-C;
+		String ans2 = (A+""+B);
+		int ans3 = Integer.valueOf(ans2)-C;
 		System.out.println(ans1);
-		int ans2 = Integer.parseInt((a + "") + (b + "")) - c;
-		System.out.println(ans2);
+		System.out.println(ans3);
+		
 	}
 }
