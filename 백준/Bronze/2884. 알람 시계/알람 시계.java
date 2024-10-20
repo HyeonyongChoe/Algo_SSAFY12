@@ -3,17 +3,19 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int h = sc.nextInt();
-		int m = sc.nextInt();
 		
-		m -= 45;
-		if (m < 0) {
-			h -= 1;
-			m += 60;
+		int H = sc.nextInt();
+		int M = sc.nextInt();
+		
+		if(M-45<0) {
+			H = (H-1+24)%24;
+			M += 15;
+			
+			
+		} else {
+			M -= 45;
 		}
-		if (h < 0) h+= 24;
 		
-		System.out.println(h + " " + m);
-		
+		System.out.println(H+" "+M);
 	}
 }
