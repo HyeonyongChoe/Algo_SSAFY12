@@ -5,9 +5,7 @@ public class Solution {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		int T = 10; 
-		
-		for(int tc=1 ; tc<=T ; tc++) {
+		for(int tc=1 ; tc<=10 ; tc++) {
 			int N = sc.nextInt();
 			
 			LinkedList<String> code = new LinkedList<>();
@@ -16,30 +14,31 @@ public class Solution {
 				code.add(sc.next());
 			}
 			
-			int K = sc.nextInt();
+			int M = sc.nextInt();
 			
-			for(int i=0 ;i<K ; i++) {
-				String order = sc.next();
+			for(int i=0 ; i<M ; i++) {
+				String command = sc.next();
 				
-				if(order.equals("I")) {
-					int idx = sc.nextInt();
-					int M = sc.nextInt();
-					for(int j=idx ; j<M+idx ; j++) {
-						code.add(j, sc.next());
+				if(command.equals("I")) {
+					int x = sc.nextInt();
+					int y = sc.nextInt();
+					
+					for(int j=x ; j<x+y ; j++) {
+						code.add(j,sc.next());
 					}
-				} else if(order.equals("D")) {
-					int idx = sc.nextInt();
-					int M = sc.nextInt();
-					for(int j=0 ; j<M ; j++) {
-						code.remove(idx);
+				} else if(command.equals("D")) {
+					int x = sc.nextInt();
+					int y = sc.nextInt();
+					
+					for(int j=0 ; j<y ; j++) {
+						code.remove(x);
 					}
 				} else {
-					int M = sc.nextInt();
-					for(int j=0 ; j<M ; j++) {
+					int y = sc.nextInt();
+					for(int j=0 ; j<y ; j++) {
 						code.add(sc.next());
 					}
-				}
-				
+				}		
 			}
 			
 			System.out.print("#"+tc+" ");
