@@ -10,20 +10,11 @@ public class Solution {
 			int N = sc.nextInt();
 			int M = sc.nextInt();
 			
-			int cnt=0;
-			for(int i=0 ; i<N ; i++) {
-				int tmp = M%2;
-				if(tmp==0) break;
-				else {
-					cnt++;
-					M /= 2;
-				}
-			}
-			if(cnt==N) {
+			if((1<<N)-1 == M % (1<<N)) {
 				System.out.println("#"+tc+" ON");
 			} else {
 				System.out.println("#"+tc+" OFF");
 			}
 		}
-	} 
+	}
 }
