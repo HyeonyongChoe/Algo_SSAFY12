@@ -60,6 +60,7 @@ public class Solution {
 	static void findPath(int node, ArrayList list) {
 		list.add(node);
 		dist[node] = (ArrayList<Integer>) list.clone();
+		if(dist[end].size()!=0) return;
 		for(int nxt : tree[node]) {
 			if(visited[nxt]) continue;
 			visited[nxt] = true;
