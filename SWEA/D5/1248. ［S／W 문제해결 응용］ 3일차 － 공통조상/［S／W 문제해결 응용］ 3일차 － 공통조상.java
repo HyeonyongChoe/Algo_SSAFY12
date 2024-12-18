@@ -6,6 +6,7 @@ public class Solution {
 	static boolean[] visited;
 	static int[] parent;
 	static int V, E, start, end, treeSize;
+	static boolean flag;
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -36,6 +37,7 @@ public class Solution {
 				parent[b] = a;
 			}
 			
+			flag = false;
 			visited[start] = true;
 			ArrayList<Integer> list = new ArrayList<>();
 			findPath(start, list);
@@ -59,8 +61,9 @@ public class Solution {
 	
 	static void findPath(int node, ArrayList list) {
 		list.add(node);
+		if(node==end) flag = true;
 		dist[node] = (ArrayList<Integer>) list.clone();
-		if(dist[end].size()!=0) return;
+		if(flag) return;
 		for(int nxt : tree[node]) {
 			if(visited[nxt]) continue;
 			visited[nxt] = true;
